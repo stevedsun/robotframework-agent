@@ -1,12 +1,15 @@
-// Observation collector, executed inside the page via Browser's
-// `Evaluate JavaScript`. Walks the DOM in document order, tags every
-// interactive element with a stable id (data-rfa-id, kept across calls via a
-// WeakMap on window.__rfa) and returns structured JSON that
-// observation.py formats as model input.
-//
-// Ids stay valid as long as their element lives; after a navigation every id
-// is re-assigned from scratch, which the agent rules tell the model to expect.
 () => {
+  // NOTE: nothing may precede the arrow function in this file — the Browser
+  // library wraps the script as `new Function("return " + script)()`, and a
+  // leading comment line breaks that through ASI.
+  //
+  // Observation collector, executed inside the page via Browser's
+  // `Evaluate JavaScript`. Walks the DOM in document order, tags every
+  // interactive element with a stable id (data-rfa-id, kept across calls via
+  // a WeakMap on window.__rfa) and returns structured JSON that
+  // observation.py formats as model input. Ids stay valid as long as their
+  // element lives; after a navigation every id is re-assigned from scratch,
+  // which the agent rules tell the model to expect.
   const state = (window.__rfa = window.__rfa || { next: 1, ids: new WeakMap() });
   const ATTR = 'data-rfa-id';
   const MAX_ITEMS = 300;
