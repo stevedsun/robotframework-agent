@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agent Shop</title>
+</head>
+<body>
+  <h1>Agent Shop</h1>
+  <form id="login">
+    <label for="user">Username</label>
+    <input id="user" name="user" type="text" placeholder="Username">
+    <label for="pass">Password</label>
+    <input id="pass" name="pass" type="password" placeholder="Password">
+    <button id="login-btn" type="button" onclick="doLogin()">Login</button>
+  </form>
+  <p id="error" style="display:none">Epic sadface: Sorry, this user has been locked out.</p>
+  <div id="app" style="display:none">
+    <h2>Products</h2>
+    <ul>
+      <li>Sauce Labs Backpack</li>
+      <li>Sauce Labs Bike Light</li>
+    </ul>
+  </div>
+  <script>
+    function doLogin() {
+      var u = document.getElementById('user').value;
+      if (u === 'standard_user') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

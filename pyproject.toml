@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robotframework-agent"
+version = "0.1.0"
+description = "LLM agent keywords (AGENT ACT / AGENT ASSERT) for Robot Framework, inspired by tester-army/e2e"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "robotframework>=7.0",
+    "robotframework-browser>=17.0",
+    "litellm>=1.50",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+RobotAgent = ["*.js"]
