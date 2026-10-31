@@ -13,8 +13,8 @@ Library    RobotAgent
 *** Test Cases ***
 Login With The Agent
     New Page    https://www.saucedemo.com/
-    AGENT ACT      使用用户 standard_user 和密码 secret_sauce 登录
-    AGENT ASSERT   页面显示了商品列表，标题为 Products
+    AGENT ACT      log in as standard_user with password secret_sauce
+    AGENT ASSERT   the page shows the product list, titled Products
 ```
 
 ## Keywords
